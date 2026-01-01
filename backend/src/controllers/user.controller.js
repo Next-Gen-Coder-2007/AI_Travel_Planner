@@ -34,9 +34,12 @@ const loginUser = async (req, res) => {
       return res.status(401).json({ message: "Invalid credentials" });
     }
     const token = generateToken(user._id)
+    res.cookie("token", token, {
+      httpOnly: true,
+      secure: false,
+    });
     res.status(200).json({
       message: "Login successful",
-      token: token,
     });
   } catch (e) {
     res.status(500).json({ message: "Error in logging in user" });

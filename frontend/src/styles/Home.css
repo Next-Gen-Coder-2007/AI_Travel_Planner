@@ -1,0 +1,387 @@
+.navbar-home {
+  padding: 15px 60px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(90deg, #6bc3e5, #00bfff);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.icon-and-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.icon-and-title img {
+  width: 50px;
+  height: 50px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  padding: 5px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
+}
+
+.icon-and-title p {
+  font-size: 30px;
+  font-weight: 700;
+  color: #ffffff;
+  text-shadow: 2px 2px 12px rgba(0, 0, 0, 0.3);
+}
+
+.login-and-register button {
+  padding: 8px 22px;
+  margin: 0 8px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 25px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: #ffffff;
+  color: #00bfff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.login-and-register button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
+}
+
+.hero-section {
+  width: 100%;
+  height: 600px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.video-bg video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100vw;
+  height: 100%;
+  object-fit: cover;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  filter: brightness(50%);
+}
+
+.video-bg .content {
+  position: relative;
+  color: #ffffff;
+  text-align: center;
+  font-weight: 700;
+  padding: 30px 50px;
+  backdrop-filter: blur(5px);
+  border-radius: 15px;
+  background: rgba(0, 191, 255, 0.2);
+}
+
+.content h1 {
+  font-size: 64px;
+  color: #ffffff;
+  text-shadow: 2px 2px 20px rgba(0, 0, 0, 0.4);
+  margin-bottom: 25px;
+}
+
+.content button {
+  padding: 14px 35px;
+  font-size: 20px;
+  margin-top: 20px;
+  border-radius: 35px;
+  font-weight: 700;
+  border: none;
+  background: #00bfff;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
+}
+
+.content button:hover {
+  background: #1e90ff;
+  transform: translateY(-4px);
+}
+
+.ai-features{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding-top: 30px;
+}
+
+.ai-features h1{
+    font-size: 40px;
+}
+
+.ai-features .container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 40px;
+}
+
+.ai-features .card {
+  flex: 1 1 250px;
+  background-color: #f0f8ff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+.ai-features .title {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  color: #0077b6;
+}
+
+.ai-features .desc {
+  font-size: 1rem;
+  color: #023047;
+}
+
+.how-it-works {
+  background: linear-gradient(180deg, #f8fbff, #eef6ff);
+  padding: 80px 40px;
+  text-align: center;
+}
+
+.how-it-works h2 {
+  font-size: 42px;
+  margin-bottom: 50px;
+  color: #023047;
+}
+
+.steps {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.step {
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 16px;
+  max-width: 280px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease;
+}
+
+.step:hover {
+  transform: translateY(-8px);
+}
+
+.step span {
+  display: inline-block;
+  background: #00bfff;
+  color: #fff;
+  font-size: 22px;
+  font-weight: bold;
+  width: 45px;
+  height: 45px;
+  line-height: 45px;
+  border-radius: 50%;
+  margin-bottom: 15px;
+}
+
+.step h4 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.cta {
+  background: linear-gradient(90deg, #00bfff, #1e90ff);
+  color: white;
+  padding: 80px 40px;
+  text-align: center;
+}
+
+.cta h2 {
+  font-size: 44px;
+  margin-bottom: 15px;
+}
+
+.cta p {
+  font-size: 18px;
+  margin-bottom: 30px;
+}
+
+.cta button {
+  background: #ffffff;
+  color: #0077b6;
+  font-size: 18px;
+  padding: 14px 40px;
+  border-radius: 30px;
+  border: none;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.cta button:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+}
+
+footer{
+    text-align: center;
+    background: linear-gradient(90deg, #87e1ff, #1e90ff);
+    border-top: 1px solid white;
+    padding: 10px;
+    color: white;
+}
+
+@media (max-width: 992px) {
+  .navbar-home {
+    padding: 12px 25px;
+  }
+
+  .icon-and-title p {
+    font-size: 24px;
+  }
+
+  .hero-section {
+    height: 520px;
+  }
+
+  .content h1 {
+    font-size: 42px;
+  }
+
+  .content p {
+    font-size: 16px;
+  }
+
+  .ai-features h1,
+  .how-it-works h2,
+  .cta h2 {
+    font-size: 36px;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar-home {
+    flex-direction: column;
+    gap: 12px;
+    padding: 15px 20px;
+  }
+
+  .icon-and-title {
+    gap: 10px;
+  }
+
+  .icon-and-title img {
+    width: 42px;
+    height: 42px;
+  }
+
+  .icon-and-title p {
+    font-size: 22px;
+  }
+
+  .login-and-register button {
+    padding: 6px 18px;
+    font-size: 14px;
+  }
+
+  .hero-section {
+    height: 480px;
+  }
+
+  .video-bg .content {
+    padding: 20px;
+    width: 90%;
+  }
+
+  .content h1 {
+    font-size: 34px;
+    line-height: 1.2;
+  }
+
+  .content p {
+    font-size: 15px;
+  }
+
+  .content button {
+    padding: 12px 26px;
+    font-size: 16px;
+  }
+
+  .ai-features .container {
+    padding: 20px;
+  }
+
+  .ai-features .card {
+    flex: 1 1 100%;
+  }
+
+  .how-it-works {
+    padding: 60px 20px;
+  }
+
+  .steps {
+    gap: 25px;
+  }
+
+  .step {
+    max-width: 100%;
+  }
+
+  .cta {
+    padding: 60px 20px;
+  }
+
+  .cta h2 {
+    font-size: 32px;
+  }
+
+  .cta p {
+    font-size: 16px;
+  }
+
+  .cta button {
+    padding: 12px 32px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .icon-and-title p {
+    font-size: 20px;
+  }
+
+  .content h1 {
+    font-size: 28px;
+  }
+
+  .content p {
+    font-size: 14px;
+  }
+
+  .ai-features h1,
+  .how-it-works h2,
+  .cta h2 {
+    font-size: 28px;
+  }
+
+  .step span {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 18px;
+  }
+}
+
