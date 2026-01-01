@@ -1,5 +1,6 @@
 import "../styles/Home.css";
 import { useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -8,6 +9,7 @@ gsap.registerPlugin(ScrollTrigger);
 const Home = () => {
   const heroRef = useRef(null);
   const cardsRef = useRef([]);
+  const navigate = useNavigate();
 
   const aiFeatures = [
     {
@@ -57,8 +59,8 @@ const Home = () => {
           <p>AI Travel Planner</p>
         </div>
         <div className="login-and-register">
-          <button className="login-btn">Login</button>
-          <button className="register-btn">Register</button>
+          <button className="login-btn" onClick={() => {navigate("/login")}}>Login</button>
+          <button className="register-btn" onClick={() => {navigate('register')}}>Register</button>
         </div>
       </div>
       <div className="hero-section">
@@ -71,7 +73,7 @@ const Home = () => {
             <p>
               AI-powered travel planning that saves time, money, and effort.
             </p>
-            <button>Start Planning</button>
+            <button onClick={() => {navigate("/login")}}>Start Planning</button>
           </div>
         </div>
       </div>
@@ -113,7 +115,7 @@ const Home = () => {
       <section className="cta">
         <h2>Ready to Plan Your Next Adventure?</h2>
         <p>Let AI do the heavy lifting while you enjoy the journey.</p>
-        <button>Get Started Free</button>
+        <button onClick={() => {navigate("/login")}}>Get Started Free</button>
       </section>
       <footer>
         <p>Copyright &copy; All Rights Reserved By Subash B</p>
