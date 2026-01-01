@@ -29,7 +29,6 @@
   margin-bottom: 10px;
 }
 
-/* Input groups */
 .input-group {
   margin-bottom: 18px;
 }
@@ -57,7 +56,6 @@
   box-shadow: 0 0 0 3px rgba(51, 154, 240, 0.2);
 }
 
-/* Password */
 .password-wrapper {
   position: relative;
 }
@@ -80,7 +78,6 @@
   color: #0b5ed7;
 }
 
-/* Error message */
 .error {
   background: #e7f1ff;
   color: #084298;
@@ -91,8 +88,7 @@
   text-align: center;
 }
 
-/* Button */
-button {
+.register button {
   width: 100%;
   padding: 12px;
   background: linear-gradient(135deg, #4dabf7, #228be6);
@@ -105,22 +101,21 @@ button {
   transition: background 0.3s, transform 0.1s, box-shadow 0.2s;
 }
 
-button:hover {
+.register button:hover {
   background: linear-gradient(135deg, #339af0, #1c7ed6);
   box-shadow: 0 6px 18px rgba(34, 139, 230, 0.3);
 }
 
-button:active {
+.register button:active {
   transform: scale(0.98);
 }
 
-button:disabled {
+.register button:disabled {
   background: #a5d8ff;
   cursor: not-allowed;
   box-shadow: none;
 }
 
-/* Responsive */
 @media (max-width: 768px) {
   .register-container {
     width: 90%;
@@ -155,7 +150,7 @@ button:disabled {
     font-size: 14px;
   }
 
-  button {
+  .register button {
     padding: 11px;
     font-size: 14px;
   }

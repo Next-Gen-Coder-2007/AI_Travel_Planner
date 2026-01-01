@@ -88,7 +88,7 @@
   text-align: center;
 }
 
-button {
+.login button {
   width: 100%;
   padding: 12px;
   background: linear-gradient(135deg, #4dabf7, #228be6);
@@ -101,16 +101,16 @@ button {
   transition: background 0.3s, transform 0.1s, box-shadow 0.2s;
 }
 
-button:hover {
+.login button:hover {
   background: linear-gradient(135deg, #339af0, #1c7ed6);
   box-shadow: 0 6px 18px rgba(34, 139, 230, 0.3);
 }
 
-button:active {
+.login button:active {
   transform: scale(0.98);
 }
 
-button:disabled {
+.login button:disabled {
   background: #a5d8ff;
   cursor: not-allowed;
   box-shadow: none;
@@ -151,7 +151,7 @@ button:disabled {
     font-size: 14px;
   }
 
-  button {
+  .login button {
     padding: 11px;
     font-size: 14px;
   }

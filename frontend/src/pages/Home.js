@@ -9,6 +9,7 @@ gsap.registerPlugin(ScrollTrigger);
 const Home = () => {
   const heroRef = useRef(null);
   const cardsRef = useRef([]);
+  const stepsRef = useRef([]);
   const navigate = useNavigate();
 
   const aiFeatures = [
@@ -26,6 +27,24 @@ const Home = () => {
       title: "Real-Time Suggestions",
       description:
         "Weather updates, crowd levels, and best time-to-visit insights.",
+    },
+  ];
+
+  const howItWorks = [
+    {
+      step: "1",
+      title: "Tell Us Your Preferences",
+      description: "Budget, destination, travel dates, and interests.",
+    },
+    {
+      step: "2",
+      title: "AI Builds Your Trip",
+      description: "Optimized itinerary with cost & time efficiency.",
+    },
+    {
+      step: "3",
+      title: "Enjoy Your Journey",
+      description: "Travel confidently with real-time suggestions.",
     },
   ];
 
@@ -49,6 +68,19 @@ const Home = () => {
         ease: "power3.out",
       });
     });
+    stepsRef.current.forEach((card, i) => {
+      gsap.from(card, {
+        scrollTrigger: {
+          trigger: card,
+          start: "top 85%",
+        },
+        opacity: 0,
+        y: 40,
+        duration: 0.8,
+        delay: i * 0.15,
+        ease: "power3.out",
+      });
+    });
   }, []);
 
   return (
@@ -59,8 +91,22 @@ const Home = () => {
           <p>AI Travel Planner</p>
         </div>
         <div className="login-and-register">
-          <button className="login-btn" onClick={() => {navigate("/login")}}>Login</button>
-          <button className="register-btn" onClick={() => {navigate('register')}}>Register</button>
+          <button
+            className="login-btn"
+            onClick={() => {
+              navigate("/login");
+            }}
+          >
+            Login
+          </button>
+          <button
+            className="register-btn"
+            onClick={() => {
+              navigate("register");
+            }}
+          >
+            Register
+          </button>
         </div>
       </div>
       <div className="hero-section">
@@ -73,7 +119,13 @@ const Home = () => {
             <p>
               AI-powered travel planning that saves time, money, and effort.
             </p>
-            <button onClick={() => {navigate("/login")}}>Start Planning</button>
+            <button
+              onClick={() => {
+                navigate("/login");
+              }}
+            >
+              Start Planning
+            </button>
           </div>
         </div>
       </div>
@@ -95,27 +147,30 @@ const Home = () => {
       <section className="how-it-works">
         <h2>How It Works</h2>
         <div className="steps">
-          <div className="step">
-            <span>1</span>
-            <h4>Tell Us Your Preferences</h4>
-            <p>Budget, destination, travel dates, and interests.</p>
-          </div>
-          <div className="step">
-            <span>2</span>
-            <h4>AI Builds Your Trip</h4>
-            <p>Optimized itinerary with cost & time efficiency.</p>
-          </div>
-          <div className="step">
-            <span>3</span>
-            <h4>Enjoy Your Journey</h4>
-            <p>Travel confidently with real-time suggestions.</p>
-          </div>
+          {howItWorks.map((item, index) => (
+            <div
+              key={index}
+              className="step"
+              ref={(el) => (stepsRef.current[index] = el)}
+            >
+              <span>{item.step}</span>
+              <h4>{item.title}</h4>
+              <p>{item.description}</p>
+            </div>
+          ))}
         </div>
       </section>
+
       <section className="cta">
         <h2>Ready to Plan Your Next Adventure?</h2>
         <p>Let AI do the heavy lifting while you enjoy the journey.</p>
-        <button onClick={() => {navigate("/login")}}>Get Started Free</button>
+        <button
+          onClick={() => {
+            navigate("/login");
+          }}
+        >
+          Get Started Free
+        </button>
       </section>
       <footer>
         <p>Copyright &copy; All Rights Reserved By Subash B</p>
