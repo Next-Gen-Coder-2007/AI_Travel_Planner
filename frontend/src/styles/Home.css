@@ -391,3 +391,7 @@ footer{
     font-size: 18px;
   }
 }
+
+html body{
+  padding: 0;
+}

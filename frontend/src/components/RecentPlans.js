@@ -9,22 +9,32 @@ const RecentPlans = () => {
   const [error, setError] = useState(null);
 
   const navigate = useNavigate();
-
   useEffect(() => {
-    axios
-      .get("http://localhost:5000/plan", { withCredentials: true })
-      .then((response) => {
-        setPlans(response.data.trips.slice(0, 5));
-        setLoading(false);
-      })
-      .catch((err) => {
+    const fetchPlans = async () => {
+      try {
+        const response = await axios.get("http://localhost:5000/plan", {
+          withCredentials: true,
+        });
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+        setPlans(response.data.trips.slice(0,5));
+      } catch (err) {
         console.error(err);
         setError("Failed to fetch plans");
+      } finally {
         setLoading(false);
-      });
+      }
+    };
+
+    fetchPlans();
   }, []);
 
-  if (loading) return <p>Loading recent plans...</p>;
+  if (loading)
+    return (
+      <div className="loader-container">
+        <div className="spinner"></div>
+        <p>Loading recent plans...</p>
+      </div>
+    );
   if (error) return <p>{error}</p>;
   if (plans.length === 0) return <p>No Plans Found</p>;
 
@@ -40,11 +50,6 @@ const RecentPlans = () => {
             onClick={() => navigate(`/plan/${plan._id}`)}
             style={{ cursor: "pointer" }}
           >
-            <img
-              src={plan.imageURL}
-              alt={plan.destination}
-              className="plan-photo"
-            />
 
             <div className="plan-content">
               <h4>{plan.destination}</h4>
@@ -62,7 +67,7 @@ const RecentPlans = () => {
         ))}
       </div>
 
-      <button className="view-more-btn">View More</button>
+      <button className="view-more-btn" onClick={() => {navigate('/plans')}}>View More</button>
     </div>
   );
 };

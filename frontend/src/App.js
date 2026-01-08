@@ -4,7 +4,8 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import TripPlannerDashboard from "./pages/Dashboard";
 import CreatePlan from "./pages/CreatePlan";
-import TripPage from "./pages/TripPage"; // import the TripPage component
+import TripPage from "./pages/TripPage";
+import Plans from "./pages/Plans";
 import ProtectedLayout from "./components/ProtectedLayout";
 
 const App = () => {
@@ -17,6 +18,7 @@ const App = () => {
 
         <Route element={<ProtectedLayout />}>
           <Route path="/dashboard" element={<TripPlannerDashboard />} />
+          <Route path="/plans" element={<Plans />} />
           <Route path="/create-plan" element={<CreatePlan />} />
           <Route path="/plan/:id" element={<TripPage />} />
         </Route>

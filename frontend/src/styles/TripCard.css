@@ -1,111 +1,823 @@
+/* Sky Blue Theme Variables */
+:root {
+  --sky-blue: #87CEEB;
+  --deep-sky-blue: #00BFFF;
+  --light-sky-blue: #E0F6FF;
+  --dark-blue: #1E3A8A;
+  --white: #FFFFFF;
+  --gray-light: #F0F9FF;
+  --gray-text: #64748B;
+  --shadow: rgba(0, 191, 255, 0.2);
+  --gradient-start: #87CEEB;
+  --gradient-end: #00BFFF;
+}
+
 .trip-card {
-  max-width: 1000px;
-  margin: 20px auto;
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  font-family: Arial, sans-serif;
-}
-
-.trip-header {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.trip-image {
-  width: 100%;
-  max-height: 300px;
-  object-fit: cover;
-  border-radius: 10px;
-}
-
-.trip-info h2 {
-  font-size: 2rem;
-  margin-bottom: 5px;
-}
-
-.trip-info p {
-  margin: 3px 0;
-  color: #555;
-}
-
-.section {
-  margin-top: 30px;
-}
-
-.section h3 {
-  font-size: 1.5rem;
-  margin-bottom: 10px;
-  border-bottom: 2px solid #ddd;
-  padding-bottom: 5px;
-}
-
-ul {
-  padding-left: 20px;
-}
-
-.stay-grid, .food-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
-}
-
-.stay-card, .food-card {
-  border: 1px solid #ddd;
-  border-radius: 10px;
+  max-width: 1200px;
+  margin: 0 auto;
+  background: var(--white);
+  border-radius: 24px;
   overflow: hidden;
+  box-shadow: 0 20px 60px var(--shadow);
+  animation: fadeIn 0.6s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Hero Section */
+.trip-hero {
+  position: relative;
+  padding: 80px 40px;
+  color: var(--white);
+  overflow: hidden;
+}
+
+.hero-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+  animation: gradientShift 8s ease infinite;
+}
+
+@keyframes gradientShift {
+  0%, 100% {
+    background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+  }
+  50% {
+    background: linear-gradient(135deg, var(--gradient-end) 0%, var(--gradient-start) 100%);
+  }
+}
+
+.hero-background::before {
+  content: '';
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  top: -150px;
+  right: -100px;
+  animation: float 6s ease-in-out infinite;
+}
+
+.hero-background::after {
+  content: '';
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  bottom: -100px;
+  left: -50px;
+  animation: float 8s ease-in-out infinite reverse;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+  }
+  50% {
+    transform: translateY(-30px) translateX(20px);
+  }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+
+.destination-badge {
+  display: inline-block;
+  padding: 8px 20px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  animation: slideDown 0.8s ease-out 0.2s both;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.trip-title {
+  font-size: 48px;
+  font-weight: 800;
+  margin-bottom: 30px;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  animation: slideUp 0.8s ease-out 0.3s both;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.trip-meta {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  margin-bottom: 25px;
+  animation: slideUp 0.8s ease-out 0.4s both;
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  padding: 10px 20px;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+}
+
+.meta-item:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-3px);
+}
+
+.meta-item svg {
+  stroke-width: 2;
+}
+
+.interests-tags {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  animation: slideUp 0.8s ease-out 0.5s both;
+}
+
+.interest-tag {
+  padding: 8px 18px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.interest-tag:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.05);
+}
+
+/* Section Styles */
+.section {
+  padding: 40px;
+  border-bottom: 1px solid var(--light-sky-blue);
+  animation: slideUp 0.6s ease-out;
+}
+
+.section:last-child {
+  border-bottom: none;
+}
+
+.section-header {
   width: 100%;
-  max-width: 480px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 30px;
+  transition: all 0.3s ease;
 }
 
-.stay-image, .food-image {
+.section-header:hover h3 {
+  color: var(--deep-sky-blue);
+}
+
+.section-header h3 {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--dark-blue);
+  transition: all 0.3s ease;
+}
+
+.section-header h3 svg {
+  stroke-width: 2.5;
+  color: var(--sky-blue);
+}
+
+.chevron {
+  transition: transform 0.4s ease;
+  stroke-width: 2.5;
+  color: var(--sky-blue);
+}
+
+.chevron.expanded {
+  transform: rotate(180deg);
+}
+
+.section-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease-out, opacity 0.5s ease-out;
+  opacity: 0;
+}
+
+.section-content.expanded {
+  max-height: 10000px;
+  opacity: 1;
+}
+
+/* Info Cards */
+.info-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  padding: 20px
+}
+
+.info-card {
+  display: flex;
+  align-items: start;
+  gap: 15px;
+  padding: 20px;
+  background: linear-gradient(135deg, var(--light-sky-blue) 0%, var(--white) 100%);
+  border-radius: 16px;
+  border: 2px solid transparent;
+  transition: all 0.4s ease;
+  animation: scaleIn 0.5s ease-out;
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.info-card:hover {
+  border-color: var(--sky-blue);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px var(--shadow);
+}
+
+.info-icon {
+  font-size: 28px;
+  flex-shrink: 0;
+  animation: bounce 2s ease-in-out infinite;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.info-card p {
+  color: var(--gray-text);
+  line-height: 1.6;
+  font-size: 15px;
+}
+
+/* Stay Grid */
+.stay-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 25px;
+  padding: 20px;
+}
+
+.stay-card {
+  background: var(--white);
+  border-radius: 20px;
+  padding: 30px;
+  border: 2px solid var(--light-sky-blue);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+  animation: scaleIn 0.5s ease-out;
+}
+
+.stay-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
   width: 100%;
-  height: 180px;
-  object-fit: cover;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(135, 206, 235, 0.1), transparent);
+  transition: left 0.5s ease;
 }
 
-.stay-info, .food-info {
-  padding: 10px 15px;
+.stay-card:hover::before {
+  left: 100%;
 }
 
-.stay-info h4, .food-info h4 {
-  margin-bottom: 5px;
+.stay-card:hover {
+  border-color: var(--sky-blue);
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 20px 40px var(--shadow);
 }
 
-a {
-  color: #1a73e8;
-  text-decoration: none;
+.stay-icon {
+  font-size: 40px;
+  margin-bottom: 15px;
+  animation: wiggle 1s ease-in-out infinite;
 }
 
-a:hover {
-  text-decoration: underline;
+@keyframes wiggle {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-5deg);
+  }
+  75% {
+    transform: rotate(5deg);
+  }
 }
 
-.day-card {
-  border: 1px solid #ddd;
-  padding: 15px;
-  border-radius: 10px;
+.stay-card h4 {
+  font-size: 22px;
+  color: var(--dark-blue);
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.stay-card .location {
+  color: var(--gray-text);
+  font-size: 14px;
   margin-bottom: 15px;
 }
 
-.activity-card {
+.stay-details {
   display: flex;
-  gap: 10px;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0;
+  padding: 15px;
+  background: var(--gray-light);
+  border-radius: 12px;
+}
+
+.stay-details .price {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--deep-sky-blue);
+}
+
+.stay-details .rating {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.book-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(135deg, var(--sky-blue) 0%, var(--deep-sky-blue) 100%);
+  color: var(--white);
+  text-decoration: none;
+  border-radius: 12px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.book-button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.book-button:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.book-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px var(--shadow);
+}
+
+/* Day Selector */
+.day-selector {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.day-button {
+  padding: 12px 24px;
+  background: var(--gray-light);
+  border: 2px solid var(--light-sky-blue);
+  border-radius: 50px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--gray-text);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.day-button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: var(--sky-blue);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.4s, height 0.4s;
+  z-index: -1;
+}
+
+.day-button:hover::before {
+  width: 200%;
+  height: 200%;
+}
+
+.day-button:hover {
+  color: var(--white);
+  border-color: var(--sky-blue);
+  transform: translateY(-2px);
+}
+
+.day-content{
+  padding: 20px;
+}
+.day-button.active {
+  background: linear-gradient(135deg, var(--sky-blue) 0%, var(--deep-sky-blue) 100%);
+  color: var(--white);
+  border-color: var(--deep-sky-blue);
+  box-shadow: 0 5px 15px var(--shadow);
+  transform: scale(1.05);
+}
+
+/* Timeline */
+.timeline {
+  position: relative;
+  padding-left: 40px;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 15px;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, var(--sky-blue) 0%, var(--deep-sky-blue) 100%);
+  animation: lineGrow 1s ease-out;
+}
+
+@keyframes lineGrow {
+  from {
+    height: 0;
+  }
+  to {
+    height: 100%;
+  }
+}
+
+.activity-card {
+  position: relative;
+  margin-bottom: 30px;
+  animation: slideRight 0.6s ease-out;
+}
+
+@keyframes slideRight {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.timeline-marker {
+  position: absolute;
+  left: -33px;
+  top: 10px;
+  width: 16px;
+  height: 16px;
+  background: var(--white);
+  border: 4px solid var(--sky-blue);
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px var(--light-sky-blue);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 4px var(--light-sky-blue);
+  }
+  50% {
+    box-shadow: 0 0 0 8px var(--light-sky-blue);
+  }
+}
+
+.activity-content {
+  background: var(--white);
+  padding: 25px;
+  border-radius: 16px;
+  border: 2px solid var(--light-sky-blue);
+  transition: all 0.3s ease;
+}
+
+.activity-content:hover {
+  border-color: var(--sky-blue);
+  transform: translateX(10px);
+  box-shadow: 0 10px 30px var(--shadow);
+}
+
+.activity-time {
+  display: inline-block;
+  padding: 6px 14px;
+  background: linear-gradient(135deg, var(--sky-blue) 0%, var(--deep-sky-blue) 100%);
+  color: var(--white);
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.activity-place {
+  font-size: 20px;
+  color: var(--dark-blue);
   margin-bottom: 10px;
+  font-weight: 700;
 }
 
-.activity-image {
-  width: 120px;
-  height: 80px;
-  object-fit: cover;
-  border-radius: 6px;
+.activity-description {
+  color: var(--gray-text);
+  line-height: 1.7;
+  margin-bottom: 15px;
+  font-size: 15px;
 }
 
+.activity-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 15px;
+  border-top: 1px solid var(--light-sky-blue);
+}
+
+.activity-cost {
+  font-weight: 700;
+  color: var(--deep-sky-blue);
+  font-size: 16px;
+}
+
+.map-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--sky-blue);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.map-link:hover {
+  color: var(--deep-sky-blue);
+  transform: translateX(3px);
+}
+
+/* Food Grid */
+.food-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 25px;
+  padding: 20px;
+}
+
+.food-card {
+  background: var(--white);
+  border-radius: 20px;
+  padding: 30px;
+  border: 2px solid var(--light-sky-blue);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  animation: scaleIn 0.5s ease-out;
+}
+
+.food-card::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(135, 206, 235, 0.1) 0%, transparent 70%);
+  transform: scale(0);
+  transition: transform 0.6s ease;
+}
+
+.food-card:hover::after {
+  transform: scale(1);
+}
+
+.food-card:hover {
+  border-color: var(--sky-blue);
+  transform: translateY(-10px) rotate(2deg);
+  box-shadow: 0 20px 40px var(--shadow);
+}
+
+.food-icon {
+  font-size: 50px;
+  margin-bottom: 15px;
+  animation: spin 3s ease-in-out infinite;
+}
+
+@keyframes spin {
+  0%, 100% {
+    transform: rotate(0deg) scale(1);
+  }
+  25% {
+    transform: rotate(-10deg) scale(1.1);
+  }
+  50% {
+    transform: rotate(0deg) scale(1);
+  }
+  75% {
+    transform: rotate(10deg) scale(1.1);
+  }
+}
+
+.food-card h4 {
+  font-size: 22px;
+  color: var(--dark-blue);
+  margin-bottom: 8px;
+  font-weight: 700;
+  position: relative;
+  z-index: 1;
+}
+
+.food-card .cuisine {
+  color: var(--gray-text);
+  font-size: 14px;
+  margin-bottom: 15px;
+  position: relative;
+  z-index: 1;
+}
+
+.food-details {
+  padding: 15px;
+  background: var(--gray-light);
+  border-radius: 12px;
+  margin: 15px 0;
+  position: relative;
+  z-index: 1;
+}
+
+.food-details .rating {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--deep-sky-blue);
+  display: block;
+  margin-bottom: 8px;
+}
+
+.food-details .location {
+  color: var(--gray-text);
+  font-size: 13px;
+  margin: 0;
+}
+
+.map-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(135deg, var(--sky-blue) 0%, var(--deep-sky-blue) 100%);
+  color: var(--white);
+  text-decoration: none;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.map-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px var(--shadow);
+}
+
+/* No Data */
 .no-data {
   text-align: center;
-  color: #777;
-  font-size: 1.2rem;
+  padding: 60px 20px;
+  color: var(--gray-text);
+  font-size: 18px;
+}
+
+@media (max-width: 768px) {
+  .trip-hero {
+    padding: 60px 20px;
+  }
+
+  .trip-title {
+    font-size: 36px;
+  }
+
+  .trip-meta {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .section {
+    padding: 30px 20px;
+  }
+
+  .section-header h3 {
+    font-size: 24px;
+  }
+
+  .stay-grid,
+  .food-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .info-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .day-selector {
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding-bottom: 10px;
+  }
+
+  .timeline {
+    padding-left: 30px;
+  }
 }

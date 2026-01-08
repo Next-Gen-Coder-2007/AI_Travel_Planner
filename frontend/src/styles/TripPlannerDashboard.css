@@ -1,117 +1,154 @@
+/* Sky Blue Theme Variables */
+:root {
+  --sky-blue: #87CEEB;
+  --deep-sky-blue: #00BFFF;
+  --light-sky-blue: #E0F6FF;
+  --dark-blue: #1E3A8A;
+  --white: #FFFFFF;
+  --gray-light: #F0F9FF;
+  --gray-text: #64748B;
+  --shadow: rgba(0, 191, 255, 0.2);
+  --gradient-start: #87CEEB;
+  --gradient-end: #00BFFF;
+}
+
+/* Dashboard Container */
 .dashboard-container {
-  width: 90%;
-  max-width: 900px;
-  margin: auto;
-  font-family: Poppins, sans-serif;
-  padding: 20px;
-}
-
-.dashboard-container h2 {
-  font-size: 24px;
-  margin-bottom: 20px;
-  font-weight: 600;
-}
-
-/* Recent Plans */
-.recent-plans-list {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding-top: 120px;
   display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-
-.recent-plan-card {
-  background: #f5f5f5;
-  padding: 14px;
-  border-radius: 12px;
-  display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  position: relative;
+  animation: fadeIn 0.6s ease-out;
 }
 
-.trip-info .destination {
-  font-size: 18px;
-  font-weight: 500;
-  margin: 0;
+
+/* Link Reset */
+.dashboard-container a {
+  text-decoration: none;
 }
 
-.trip-info .details {
-  font-size: 14px;
-  opacity: 0.7;
-  margin: 2px 0 0;
-}
-
-.view-btn {
-  padding: 8px 18px;
-  background: #000;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.view-btn:hover {
-  opacity: 0.8;
-}
-
-/* View More Button */
-.view-more-btn,
-.view-more-btn {
-  margin-top: 18px;
-  background: none;
-  border: none;
-  font-size: 15px;
-  text-decoration: underline;
-  cursor: pointer;
-  font-weight: 500;
-}
-
-.view-more-btn:hover {
-  opacity: 0.7;
-}
-
-/* View More Plans */
-.view-more-btn {
-  margin-top: 25px;
-  padding: 10px 20px;
-  border-radius: 8px;
-  border: 1px solid #000;
-  background: transparent;
-  font-size: 16px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.view-more-btn:hover {
-  background: #000;
-  color: #fff;
-}
-
+/* Create Plan Button */
 .create-plan-btn {
-  background: #000;
-  color: #fff;
-  border: none;
-  padding: 10px 16px;
-  border-radius: 8px;
-  font-size: 16px;
-  cursor: pointer;
   display: flex;
-  gap: 8px;
   align-items: center;
-  transition: 0.3s;
+  justify-content: center;
+  gap: 14px;
+  padding: 24px 48px;
+  background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+  color: var(--white);
+  border: none;
+  border-radius: 60px;
+  font-size: 20px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 12px 40px var(--shadow);
+  animation: slideUp 0.8s ease-out 0.2s both;
+}
+
+
+.create-plan-btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease, height 0.6s ease;
+}
+
+.create-plan-btn:hover::before {
+  width: 500px;
+  height: 500px;
+}
+
+.create-plan-btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 60px;
+  padding: 3px;
+  background: linear-gradient(135deg, var(--white) 0%, transparent 50%, var(--white) 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.create-plan-btn:hover::after {
+  opacity: 0.3;
 }
 
 .create-plan-btn:hover {
-  opacity: 0.8;
+  transform: translateY(-8px) scale(1.05);
+  box-shadow: 0 20px 60px var(--shadow);
 }
 
-.dashboard-container {
-  width: 90%;
-  max-width: 900px;
-  margin: 25px auto;
+.create-plan-btn:active {
+  transform: translateY(-4px) scale(1.02);
 }
 
 .create-plan-btn i {
-  font-size: 14px;
+  font-size: 22px;
+  transition: transform 0.3s ease;
+}
+
+.create-plan-btn:hover i {
+  transform: rotate(90deg);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .dashboard-container {
+    padding: 60px 16px 30px;
+    min-height: 250px;
+  }
+
+  .dashboard-container::before {
+    width: 400px;
+    height: 400px;
+  }
+
+  .create-plan-btn {
+    padding: 20px 40px;
+    font-size: 18px;
+    gap: 12px;
+  }
+
+  .create-plan-btn i {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard-container {
+    padding: 50px 12px 24px;
+    min-height: 200px;
+  }
+
+  .dashboard-container::before {
+    width: 300px;
+    height: 300px;
+  }
+
+  .create-plan-btn {
+    padding: 18px 36px;
+    font-size: 16px;
+    gap: 10px;
+    border-radius: 50px;
+  }
+
+  .create-plan-btn i {
+    font-size: 18px;
+  }
 }

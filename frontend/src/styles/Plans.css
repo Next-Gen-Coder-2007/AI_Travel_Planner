@@ -15,8 +15,8 @@
 /* Plans Section */
 .plans-section {
   max-width: 1400px;
+  padding-top: 100px;
   margin: 0 auto;
-  padding: 60px 24px;
   animation: fadeIn 0.6s ease-out;
 }
 
@@ -201,68 +201,6 @@
   box-shadow: 0 6px 16px var(--shadow);
 }
 
-/* View More Button */
-.view-more-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  margin: 0 auto;
-  padding: 16px 40px;
-  background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
-  color: var(--white);
-  border: none;
-  border-radius: 50px;
-  font-size: 16px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  position: relative;
-  overflow: hidden;
-  box-shadow: 0 8px 24px var(--shadow);
-  animation: slideUp 0.8s ease-out 0.5s both;
-  text-decoration: none;
-}
-
-.view-more-btn::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 0;
-  height: 0;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.3);
-  transform: translate(-50%, -50%);
-  transition: width 0.6s, height 0.6s;
-}
-
-.view-more-btn:hover::before {
-  width: 400px;
-  height: 400px;
-}
-
-.view-more-btn::after {
-  content: '→';
-  font-size: 20px;
-  font-weight: bolder;
-  transition: transform 0.3s ease;
-}
-
-.view-more-btn:hover {
-  transform: translateY(-3px) scale(1.05);
-  box-shadow: 0 12px 36px var(--shadow);
-  background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
-}
-
-.view-more-btn:hover::after {
-  transform: translateX(5px);
-}
-
-.view-more-btn:active {
-  transform: translateY(-1px) scale(1.02);
-}
-
 /* Loader */
 .loader-container {
   display: flex;
@@ -296,18 +234,6 @@
   font-weight: 600;
 }
 
-
-/* Empty State */
-.plans-section > p {
-  text-align: center;
-  font-size: 20px;
-  color: var(--gray-text);
-  padding: 80px 20px;
-  background: var(--gray-light);
-  border-radius: 24px;
-  border: 2px dashed var(--light-sky-blue);
-  animation: fadeIn 0.6s ease-out;
-}
 
 /* Responsive Design */
 @media (max-width: 1200px) {

@@ -71,7 +71,7 @@ const CreatePlan = () => {
         }
       );
 
-      setAiPlan(response.data.data); // the generated trip plan
+      setAiPlan(response.data.data);
     } catch (err) {
       console.error(err);
       setError(err.response?.data?.message || "Failed to generate plan");
