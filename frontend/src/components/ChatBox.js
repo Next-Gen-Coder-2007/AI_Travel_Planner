@@ -6,7 +6,7 @@ const ChatBox = ({ tripId, messages }) => {
   const [chatInput, setChatInput] = useState("");
   const [chatMessages, setChatMessages] = useState([]);
   const [isTyping, setIsTyping] = useState(false);
-  const [isMinimized, setIsMinimized] = useState(false);
+  const [isMinimized, setIsMinimized] = useState(true);
   const chatWindowRef = useRef(null);
   const inputRef = useRef(null);
 
