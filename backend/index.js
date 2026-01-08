@@ -8,12 +8,15 @@ const tripRoutes = require('./src/routes/trip.routes')
 dotenv.config()
 
 const app = express();
- // origin: 'https://ai-travel-planner-lime-omega.vercel.app'
 app.use(express.json())
 app.use(cors({
-    origin: '*',
-    credentials: true
-}))
+  origin: [
+    "https://ai-travel-planner-lime-omega.vercel.app",
+    "http://localhost:3000"
+  ],
+  credentials: true
+}));
+
 app.use(cookieParser())
 app.use('/user', userRoutes)
 app.use('/plan', tripRoutes)
