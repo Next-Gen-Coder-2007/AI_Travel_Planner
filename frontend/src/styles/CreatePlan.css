@@ -1,4 +1,3 @@
-/* Sky Blue Theme Variables */
 :root {
   --sky-blue: #87CEEB;
   --deep-sky-blue: #00BFFF;
@@ -13,7 +12,6 @@
   --error-red: #DC2626;
 }
 
-/* Create Plan Container */
 .create-plan-container {
   max-width: 900px;
   margin: 0 auto;
@@ -75,7 +73,6 @@
   }
 }
 
-/* Form Card */
 .form-card {
   background: var(--white);
   border-radius: 32px;
@@ -109,7 +106,6 @@
   pointer-events: none;
 }
 
-/* Input Fields */
 .form-card input[type="text"],
 .form-card input[type="number"],
 .form-card input[name="destination"],
@@ -142,7 +138,6 @@
   font-weight: 500;
 }
 
-/* Budget Range */
 .budget-range {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -154,7 +149,6 @@
   margin-bottom: 0;
 }
 
-/* Interests Section */
 .interests {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
@@ -222,7 +216,6 @@
   box-shadow: 0 4px 12px var(--shadow);
 }
 
-/* Custom Interest Box */
 .custom-interest-box {
   display: flex;
   gap: 12px;
@@ -276,7 +269,6 @@
   transform: translateY(-1px) rotate(90deg);
 }
 
-/* Interest Tags Display */
 .interest-tags {
   display: flex;
   flex-wrap: wrap;
@@ -328,7 +320,6 @@
   transform: rotate(90deg);
 }
 
-/* Generate Button */
 .form-card > button {
   width: 100%;
   padding: 20px;
@@ -380,7 +371,6 @@
   box-shadow: none;
 }
 
-/* Error Message */
 .error {
   padding: 16px 20px;
   background: #FEE2E2;
@@ -399,7 +389,6 @@
   75% { transform: translateX(10px); }
 }
 
-/* AI Plan Result */
 .ai-plan-result {
   margin-top: 40px;
   padding: 40px;
@@ -488,7 +477,6 @@
   box-shadow: 0 4px 12px var(--shadow);
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
   .create-plan-container {
     padding: 30px 16px;

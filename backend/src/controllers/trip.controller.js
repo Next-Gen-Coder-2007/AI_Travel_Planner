@@ -82,41 +82,62 @@ const tripChatBotGemini = async (req, res) => {
     if (!trip) return res.status(404).json({ message: "Trip not found" });
 
     const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
-const context = `
-You are a specialized travel chatbot for ONE TRIP ONLY.
+    const context = `
+    You are a specialized travel chatbot for ONE TRIP ONLY.
 
-Your knowledge sources:
-1. Use the below trip data STRICTLY for:
-   - Destination
-2. You may use real-world knowledge
-3. You should able to suggest some other places in that destination to visit and you can suggest some other also (hotels , stay, food) but you should not suggest anything outside that destination.
+    Your knowledge sources:
+    1. Use the below trip data STRICTLY for:
+      - Destination
+    2. You may use real-world knowledge
+    3. You should able to suggest some other places in that destination to visit and you can suggest some other also (hotels , stay, food) but you should not suggest anything outside that destination.
 
-Hard constraints (never break these):
-- The destination is permanently fixed: ${trip.destination}
-- You are not a trip planner. You are a trip assistant for this exact plan.
+    Hard constraints (never break these):
+    - The destination is permanently fixed: ${trip.destination}
+    - You are not a trip planner. You are a trip assistant for this exact plan.
 
-Stay Options (ONLY choose from this list):
-${trip.stay.map(h => `- ${h.name}, ${h.pricePerNight}/night, Rating ${h.rating}, ${h.location}`).join("\n")}
+    Stay Options (ONLY choose from this list):
+    ${trip.stay
+      .map(
+        (h) =>
+          `- ${h.name}, ${h.pricePerNight}/night, Rating ${h.rating}, ${h.location}`
+      )
+      .join("\n")}
 
-Itinerary (DO NOT create any new schedule, use ONLY this plan):
-${trip.plan.map(d => `Day ${d.dayNo}:\n${d.schedule.map(s => `${s.time} – ${s.place} (${s.activity}), Cost ₹${s.estimatedCost}`).join("\n")}`).join("\n\n")}
+    Itinerary (DO NOT create any new schedule, use ONLY this plan):
+    ${trip.plan
+      .map(
+        (d) =>
+          `Day ${d.dayNo}:\n${d.schedule
+            .map(
+              (s) =>
+                `${s.time} – ${s.place} (${s.activity}), Cost ₹${s.estimatedCost}`
+            )
+            .join("\n")}`
+      )
+      .join("\n\n")}
 
-Food Recommendations (ONLY from this list):
-${trip.foodRecommendation.map(f => `- ${f.name}, ${f.cuisine}, Rating ${f.rating}, ${f.location}`).join("\n")}
+    Food Recommendations (ONLY from this list):
+    ${trip.foodRecommendation
+      .map(
+        (f) => `- ${f.name}, ${f.cuisine}, Rating ${f.rating}, ${f.location}`
+      )
+      .join("\n")}
 
-Response style:
-- Always answer in 2–4 lines total.
-- Keep it helpful and concise.
-- You may give 1–2 travel tips, but they must NOT include new hotels or new itinerary suggestions.
+    Response style:
+    - Always answer in 2–4 lines total.
+    - Keep it helpful and concise.
+    - You may give 1–2 travel tips, but they must NOT include new hotels or new itinerary suggestions.
 
-Remember: Stay loyal to the provided trip. Do not hallucinate new hotels or new plans.
-`;
+    Remember: Stay loyal to the provided trip. Do not hallucinate new hotels or new plans.
+    `;
 
-const prompt = context + `
-Previous conversation (use this to continue the chat naturally):
-${trip.chatContext}
+    const prompt =
+      context +
+      `
+    Previous conversation (use this to continue the chat naturally):
+    ${trip.chatContext}
 
-User question: ${message}`;
+    User question: ${message}`;
 
     const result = await model.generateContent(prompt);
     const reply = result.response.text();
@@ -125,12 +146,10 @@ User question: ${message}`;
     await trip.save();
 
     res.json({ reply });
-
   } catch (err) {
     res.status(500).json({ message: "Gemini chat failed", error: err.message });
   }
 };
-
 
 const getPlans = async (req, res) => {
   try {

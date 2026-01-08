@@ -55,7 +55,7 @@ const CreatePlan = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/plan/generate-plan", // replace with your backend endpoint
+        "http://localhost:5000/plan/generate-plan",
         {
           destination: trip.destination,
           days: trip.days,

@@ -21,7 +21,6 @@ const TripCard = ({ trip }) => {
 
   return (
     <div className="trip-card">
-      {/* Hero Header */}
       <div className="trip-hero">
         <div className="hero-background"></div>
         <div className="hero-content">
@@ -62,7 +61,6 @@ const TripCard = ({ trip }) => {
         </div>
       </div>
 
-      {/* About Location */}
       {trip.aboutTheLocation && trip.aboutTheLocation.length > 0 && (
         <div className="section">
           <button 
@@ -101,7 +99,6 @@ const TripCard = ({ trip }) => {
         </div>
       )}
 
-      {/* Stay Options */}
       {trip.stay && trip.stay.length > 0 && (
         <div className="section">
           <button 
@@ -156,7 +153,6 @@ const TripCard = ({ trip }) => {
         </div>
       )}
 
-      {/* Daily Plans */}
       {trip.plan && trip.plan.length > 0 && (
         <div className="section">
           <button 
@@ -233,7 +229,6 @@ const TripCard = ({ trip }) => {
         </div>
       )}
 
-      {/* Food Recommendations */}
       {trip.foodRecommendation && trip.foodRecommendation.length > 0 && (
         <div className="section">
           <button 

@@ -30,7 +30,6 @@ const ChatBox = ({ tripId, messages }) => {
     setChatMessages(processMessages(messages));
   }, [messages]);
 
-  // Auto-scroll to bottom when new messages arrive
   useEffect(() => {
     if (chatWindowRef.current) {
       chatWindowRef.current.scrollTop = chatWindowRef.current.scrollHeight;
@@ -40,8 +39,6 @@ const ChatBox = ({ tripId, messages }) => {
   const sendChat = async () => {
     const msg = chatInput.trim();
     if (!msg) return;
-
-    // Add user message
     setChatMessages((prev) => [...prev, { from: "user", text: msg }]);
     setChatInput("");
     setIsTyping(true);

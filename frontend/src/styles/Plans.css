@@ -1,4 +1,3 @@
-/* Sky Blue Theme Variables */
 :root {
   --sky-blue: #87CEEB;
   --deep-sky-blue: #00BFFF;
@@ -12,7 +11,6 @@
   --gradient-end: #00BFFF;
 }
 
-/* Plans Section */
 .plans-section {
   max-width: 1400px;
   padding-top: 100px;
@@ -74,7 +72,6 @@
   }
 }
 
-/* Plans Grid */
 .plans-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -94,7 +91,6 @@
   }
 }
 
-/* Plan Card */
 .plan-card {
   position: relative;
   background: var(--white);
@@ -117,15 +113,12 @@
   }
 }
 
-
-
 .plan-card:hover {
   border-color: var(--sky-blue);
   transform: translateY(-10px) scale(1.02);
   box-shadow: 0 20px 60px var(--shadow);
 }
 
-/* Plan Content */
 .plan-content {
   position: relative;
   z-index: 1;
@@ -154,7 +147,6 @@
   transition: all 0.3s ease;
 }
 
-/* Interests */
 .interests {
   display: flex;
   flex-wrap: wrap;
@@ -201,7 +193,6 @@
   box-shadow: 0 6px 16px var(--shadow);
 }
 
-/* Loader */
 .loader-container {
   display: flex;
   flex-direction: column;
@@ -234,8 +225,6 @@
   font-weight: 600;
 }
 
-
-/* Responsive Design */
 @media (max-width: 1200px) {
   .plans-grid {
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -329,7 +318,6 @@
   }
 }
 
-/* Hover Effects for Touch Devices */
 @media (hover: none) {
   .plan-card:hover {
     transform: none;

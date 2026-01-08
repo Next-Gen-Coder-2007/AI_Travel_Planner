@@ -35,16 +35,15 @@ const TripPage = () => {
   if (!trip) return <p style={{ textAlign: "center" }}>No trip found</p>;
 
   return (
-<div className="trip-page-container">
-  <div className="trip-card-container">
-    <TripCard trip={trip} />
-  </div>
+  <div className="trip-page-container">
+    <div className="trip-card-container">
+      <TripCard trip={trip} />
+    </div>
 
-  <div className="trip-chat-container">
-    <ChatBox tripId={trip._id} messages = {trip.chatContext} />
+    <div className="trip-chat-container">
+      <ChatBox tripId={trip._id} messages = {trip.chatContext} />
+    </div>
   </div>
-</div>
-
   );
 };
 

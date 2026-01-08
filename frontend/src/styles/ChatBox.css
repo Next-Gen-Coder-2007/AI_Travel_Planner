@@ -45,7 +45,6 @@
   display: none;
 }
 
-/* Chat Header */
 .chat-header {
   background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
   padding: 20px;
@@ -161,7 +160,6 @@
   stroke-width: 2.5;
 }
 
-/* Chat Content */
 .chat-content {
   display: flex;
   flex-direction: column;
@@ -169,7 +167,6 @@
   overflow: hidden;
 }
 
-/* Chat Window */
 .chat-window {
   flex: 1;
   overflow-y: auto;
@@ -182,7 +179,6 @@
   min-height: 300px;
 }
 
-/* Custom Scrollbar */
 .chat-window::-webkit-scrollbar {
   width: 6px;
 }
@@ -200,7 +196,6 @@
   background: var(--deep-sky-blue);
 }
 
-/* Welcome Message */
 .welcome-message {
   text-align: center;
   padding: 40px 20px;
@@ -288,7 +283,6 @@
   transform: translateX(5px);
 }
 
-/* Chat Messages */
 .chat-message {
   display: flex;
   gap: 10px;
@@ -406,7 +400,6 @@
   }
 }
 
-/* Chat Bar */
 .chat-bar {
   background: var(--white);
   padding: 16px 20px;
@@ -594,7 +587,6 @@
   }
 }
 
-/* Smooth appearance animation */
 @keyframes float {
   0%, 100% {
     transform: translateY(0) translateX(0);
