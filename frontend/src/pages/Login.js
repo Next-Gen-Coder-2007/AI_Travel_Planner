@@ -1,4 +1,5 @@
 import { useState } from "react";
+import {useNavigate} from 'react-router-dom';
 import axios from "axios";
 import "../styles/Login.css";
 
@@ -8,6 +9,7 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -17,9 +19,12 @@ const Login = () => {
     try {
       await axios.post(
         "http://localhost:5000/user/login",
-        { email, password }
+        { email, password },{
+          withCredentials: true,
+        }
       );
       console.log("Login successful");
+      navigate('/dashboard')
     } catch (err) {
       setError(
         err.response?.data?.message || "Invalid email or password"

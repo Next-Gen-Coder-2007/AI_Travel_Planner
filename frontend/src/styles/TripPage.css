@@ -1,0 +1,17 @@
+.trip-page-container {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  padding: 20px;
+}
+
+.trip-card-container {
+  flex: 1;
+}
+
+.trip-chat-container {
+  width: 380px;
+  flex-shrink: 0;
+  position: sticky;
+  top: 20px;
+}

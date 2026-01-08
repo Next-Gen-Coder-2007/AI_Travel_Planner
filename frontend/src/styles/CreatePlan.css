@@ -1,0 +1,128 @@
+.create-plan-container {
+  width: 90%;
+  max-width: 650px;
+  margin: 40px auto;
+  font-family: Poppins, sans-serif;
+}
+
+.create-plan-container h2 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.form-card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.form-card input,
+.form-card select {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 15px;
+  outline: none;
+  width: 100%;
+}
+
+.budget-range {
+  display: flex;
+  gap: 10px;
+}
+
+.budget-range input {
+  flex: 1;
+}
+
+/* Interests */
+.interests {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-size: 14px;
+  margin-top: 6px;
+}
+
+.interests label {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* Custom interest box */
+.custom-interest-box {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.add-interest-btn {
+  background: #000;
+  color: #fff;
+  border: none;
+  width: 40px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.add-interest-btn:hover {
+  opacity: 0.8;
+}
+
+/* Tags */
+.interest-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.interest-tag {
+  background: #000;
+  color: #fff;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+}
+
+.remove-tag {
+  cursor: pointer;
+  font-size: 12px;
+  margin-left: 6px;
+}
+
+.remove-tag:hover {
+  opacity: 0.6;
+}
+
+.form-card button {
+  background: #000;
+  color: #fff;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-top: 10px;
+}
+
+.form-card button:hover {
+  opacity: 0.8;
+}
+
+.form-card button:disabled{
+  background-color: #00000089;
+  cursor: progress;
+}

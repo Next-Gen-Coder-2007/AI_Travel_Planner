@@ -46,7 +46,17 @@ const loginUser = async (req, res) => {
   }
 };
 
+
+const checkUser = (req, res) => {
+  const token = req.cookies?.token;
+  if (!token) {
+    return res.status(401).json({ authenticated: false });
+  }
+  return res.status(200).json({ authenticated: true });
+};
+
 module.exports = {
     registerUser,
-    loginUser
+    loginUser,
+    checkUser
 }

@@ -22,9 +22,6 @@ const tripSchema = mongoose.Schema({
   travelStyle: {
     type: String,
   },
-  imageURL: {
-    type: String,
-  },
   aboutTheLocation: [
     {
       type: String,
@@ -36,9 +33,6 @@ const tripSchema = mongoose.Schema({
         type: String,
       },
       loaction: {
-        type: String,
-      },
-      imageURL: {
         type: String,
       },
       pricePerNight: {
@@ -71,9 +65,6 @@ const tripSchema = mongoose.Schema({
           activity: {
             type: String,
           },
-          imageURL: {
-            type: String,
-          },
           estimatedCost: {
             type: String,
           },
@@ -95,9 +86,6 @@ const tripSchema = mongoose.Schema({
       rating: {
         type: String,
       },
-      imageURL: {
-        type: String,
-      },
       location: {
         type: String,
       },
@@ -110,6 +98,10 @@ const tripSchema = mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+  chatContext: {
+    type: String,
+    default: "",
+  },
 });
 
-module.exports = mongoose.model('Trip', tripSchema)
+module.exports = mongoose.model("Trip", tripSchema);

@@ -1,0 +1,74 @@
+.trip-chat-box {
+  width: 380px;
+  margin: 20px auto;
+  background: #222;
+  padding: 12px;
+  border-radius: 10px;
+  color: white;
+  font-family: Poppins, sans-serif;
+}
+
+.trip-chat-box h3 {
+  text-align: center;
+  margin-bottom: 8px;
+  font-size: 18px;
+}
+
+.chat-window {
+  height: 220px;
+  overflow-y: auto;
+  background: #333;
+  padding: 8px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+.chat-user,
+.chat-ai {
+  padding: 6px 10px;
+  border-radius: 6px;
+  margin-bottom: 6px;
+  font-size: 14px;
+  max-width: 80%;
+  word-wrap: break-word;
+}
+
+.chat-user {
+  background: #4b79ff;
+  margin-left: auto;
+  text-align: right;
+}
+
+.chat-ai {
+  background: #555;
+  text-align: left;
+}
+
+.chat-bar {
+  display: flex;
+  gap: 6px;
+}
+
+.chat-bar input {
+  flex: 1;
+  padding: 7px;
+  border-radius: 6px;
+  border: none;
+  outline: none;
+  background: #333;
+  color: white;
+  font-size: 14px;
+}
+
+.chat-bar button {
+  padding: 7px 12px;
+  border-radius: 6px;
+  border: none;
+  background: #4b79ff;
+  color: white;
+  cursor: pointer;
+}
+
+.chat-bar button:hover {
+  background: #355ae0;
+}

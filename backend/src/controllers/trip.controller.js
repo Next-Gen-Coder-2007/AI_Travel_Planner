@@ -8,7 +8,9 @@ const generatePlan = async (req, res) => {
     const { destination, days, budget, interests, travelStyle } = req.body;
     const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
     const prompt = `Generate a comprehensive travel plan for ${destination} for ${days} days. 
-    Budget: ${budget}. Interests: ${interests.join(", ")}. Style: ${travelStyle}.
+    Budget: ${budget}. Interests: ${interests.join(
+      ", "
+    )}. Style: ${travelStyle}.
 
     Return a JSON object with this exact structure:
     {
@@ -17,7 +19,6 @@ const generatePlan = async (req, res) => {
       "stay": [{
         "name": "string",
         "location": "string",
-        "imageURL": "string",
         "pricePerNight": "string",
         "rating": "string",
         "bookingLink": "string",
@@ -29,7 +30,6 @@ const generatePlan = async (req, res) => {
           "time": "string",
           "place": "string",
           "activity": "string",
-          "imageURL": "string",
           "estimatedCost": "string",
           "googleMapLink": "string"
         }]
@@ -38,7 +38,6 @@ const generatePlan = async (req, res) => {
         "name": "string",
         "cuisine": "string",
         "rating": "string",
-        "imageURL": "string",
         "location": "string",
         "googleMapLink": "string"
       }]
@@ -75,6 +74,64 @@ const generatePlan = async (req, res) => {
   }
 };
 
+const tripChatBotGemini = async (req, res) => {
+  try {
+    const { tripId, message } = req.body;
+
+    const trip = await Trip.findById(tripId);
+    if (!trip) return res.status(404).json({ message: "Trip not found" });
+
+    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
+const context = `
+You are a specialized travel chatbot for ONE TRIP ONLY.
+
+Your knowledge sources:
+1. Use the below trip data STRICTLY for:
+   - Destination
+2. You may use real-world knowledge
+3. You should able to suggest some other places in that destination to visit and you can suggest some other also (hotels , stay, food) but you should not suggest anything outside that destination.
+
+Hard constraints (never break these):
+- The destination is permanently fixed: ${trip.destination}
+- You are not a trip planner. You are a trip assistant for this exact plan.
+
+Stay Options (ONLY choose from this list):
+${trip.stay.map(h => `- ${h.name}, ${h.pricePerNight}/night, Rating ${h.rating}, ${h.location}`).join("\n")}
+
+Itinerary (DO NOT create any new schedule, use ONLY this plan):
+${trip.plan.map(d => `Day ${d.dayNo}:\n${d.schedule.map(s => `${s.time} – ${s.place} (${s.activity}), Cost ₹${s.estimatedCost}`).join("\n")}`).join("\n\n")}
+
+Food Recommendations (ONLY from this list):
+${trip.foodRecommendation.map(f => `- ${f.name}, ${f.cuisine}, Rating ${f.rating}, ${f.location}`).join("\n")}
+
+Response style:
+- Always answer in 2–4 lines total.
+- Keep it helpful and concise.
+- You may give 1–2 travel tips, but they must NOT include new hotels or new itinerary suggestions.
+
+Remember: Stay loyal to the provided trip. Do not hallucinate new hotels or new plans.
+`;
+
+const prompt = context + `
+Previous conversation (use this to continue the chat naturally):
+${trip.chatContext}
+
+User question: ${message}`;
+
+    const result = await model.generateContent(prompt);
+    const reply = result.response.text();
+
+    trip.chatContext += `\nUser: ${message}\nAI: ${reply}\n`;
+    await trip.save();
+
+    res.json({ reply });
+
+  } catch (err) {
+    res.status(500).json({ message: "Gemini chat failed", error: err.message });
+  }
+};
+
+
 const getPlans = async (req, res) => {
   try {
     const userId = req.user._id;
@@ -108,4 +165,5 @@ module.exports = {
   generatePlan,
   getPlans,
   getPlan,
+  tripChatBotGemini,
 };
