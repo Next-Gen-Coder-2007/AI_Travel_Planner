@@ -7,7 +7,10 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+
   const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -27,8 +30,7 @@ const Register = () => {
         "https://ai-travel-planner-w8jd.onrender.com/user/register",
         { name, email, password }
       );
-      console.log("Registered successfully");
-      window.location.href = '/login';
+      window.location.href = "/login";
     } catch (err) {
       setError(err.response?.data?.message || "Registration failed");
     } finally {
@@ -66,6 +68,7 @@ const Register = () => {
             />
           </div>
 
+          {/* Password */}
           <div className="input-group">
             <label>Password</label>
             <div className="password-wrapper">
@@ -83,15 +86,26 @@ const Register = () => {
             </div>
           </div>
 
+          {/* Confirm Password */}
           <div className="input-group">
             <label>Re-enter Password</label>
-            <input
-              type={showPassword ? "text" : "password"}
-              required
-              placeholder="Re-enter password"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-            />
+            <div className="password-wrapper">
+              <input
+                type={showConfirmPassword ? "text" : "password"}
+                required
+                placeholder="Re-enter password"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+              />
+              <i
+                className={`fa ${
+                  showConfirmPassword ? "fa-eye-slash" : "fa-eye"
+                }`}
+                onClick={() =>
+                  setShowConfirmPassword(!showConfirmPassword)
+                }
+              ></i>
+            </div>
           </div>
 
           <button type="submit" disabled={loading}>

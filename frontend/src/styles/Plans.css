@@ -233,10 +233,6 @@
 }
 
 @media (max-width: 768px) {
-  .plans-section {
-    padding: 40px 16px;
-  }
-
   .section-title {
     font-size: 28px;
     margin-bottom: 30px;
@@ -277,10 +273,6 @@
 }
 
 @media (max-width: 480px) {
-  .plans-section {
-    padding: 30px 12px;
-  }
-
   .section-title {
     font-size: 24px;
     margin-bottom: 24px;
