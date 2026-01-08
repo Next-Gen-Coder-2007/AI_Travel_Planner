@@ -36,7 +36,7 @@ const loginUser = async (req, res) => {
     const token = generateToken(user._id)
     res.cookie("token", token, {
       httpOnly: true,
-      secure: false,
+      secure: true,
     });
     res.status(200).json({
       message: "Login successful",
@@ -49,7 +49,7 @@ const loginUser = async (req, res) => {
 const logoutUser = (req, res) => {
   res.clearCookie("token", {
     httpOnly: true,
-    secure: false,
+    secure: true,
   });
   res.status(200).json({ message: "Logout successful" });
 };

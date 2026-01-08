@@ -24,7 +24,7 @@ const Register = () => {
 
     try {
       await axios.post(
-        "http://localhost:5000/user/register",
+        "https://ai-travel-planner-w8jd.onrender.com/user/register",
         { name, email, password }
       );
       console.log("Registered successfully");

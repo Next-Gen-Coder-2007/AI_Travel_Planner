@@ -2,7 +2,6 @@
 
 # dependencies
 /node_modules
-*.mp4
 /.pnp
 .pnp.js
 

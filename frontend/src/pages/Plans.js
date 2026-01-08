@@ -13,7 +13,7 @@ const RecentPlans = () => {
   useEffect(() => {
     const fetchPlans = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/plan", {
+        const response = await axios.get("https://ai-travel-planner-w8jd.onrender.com/plan", {
           withCredentials: true,
         });
         await new Promise((resolve) => setTimeout(resolve, 1000));

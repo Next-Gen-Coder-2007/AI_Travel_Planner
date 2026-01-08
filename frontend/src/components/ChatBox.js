@@ -45,7 +45,7 @@ const ChatBox = ({ tripId, messages }) => {
 
     try {
       const res = await axios.post(
-        "http://localhost:5000/plan/chat",
+        "https://ai-travel-planner-w8jd.onrender.com/plan/chat",
         {
           tripId,
           message: msg,

@@ -18,7 +18,7 @@ const Login = () => {
 
     try {
       await axios.post(
-        "http://localhost:5000/user/login",
+        "https://ai-travel-planner-w8jd.onrender.com/user/login",
         { email, password },{
           withCredentials: true,
         }

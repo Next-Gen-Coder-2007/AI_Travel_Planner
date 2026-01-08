@@ -11,11 +11,10 @@ const app = express();
 
 app.use(express.json())
 app.use(cors({
-    origin: 'http://localhost:3000',
+    origin: 'https://ai-travel-planner-lime-omega.vercel.app',
     credentials: true
 }))
 app.use(cookieParser())
-
 app.use('/user', userRoutes)
 app.use('/plan', tripRoutes)
 

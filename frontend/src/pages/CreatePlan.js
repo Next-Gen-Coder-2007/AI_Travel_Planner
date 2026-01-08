@@ -55,7 +55,7 @@ const CreatePlan = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/plan/generate-plan",
+        "https://ai-travel-planner-w8jd.onrender.com/plan/generate-plan",
         {
           destination: trip.destination,
           days: trip.days,

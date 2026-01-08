@@ -10,7 +10,7 @@ const ProtectedLayout = () => {
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/user/check", {
+        const res = await axios.get("https://ai-travel-planner-w8jd.onrender.com/user/check", {
           withCredentials: true,
         });
         if (!res.data.authenticated) {

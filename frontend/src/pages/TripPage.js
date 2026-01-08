@@ -15,7 +15,7 @@ const TripPage = () => {
     const fetchTrip = async () => {
       try {
         setLoading(true);
-        const res = await axios.get(`http://localhost:5000/plan/${id}`, {
+        const res = await axios.get(`https://ai-travel-planner-w8jd.onrender.com/plan/${id}`, {
           withCredentials: true,
         });
         setTrip(res.data.data);
