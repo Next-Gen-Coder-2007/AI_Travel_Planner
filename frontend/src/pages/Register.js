@@ -26,10 +26,11 @@ const Register = () => {
     setLoading(true);
 
     try {
-      await axios.post(
-        "https://ai-travel-planner-w8jd.onrender.com/user/register",
-        { name, email, password }
-      );
+      await axios.post(`${process.env.REACT_APP_BASE_URL}/user/register`, {
+        name,
+        email,
+        password,
+      });
       window.location.href = "/login";
     } catch (err) {
       setError(err.response?.data?.message || "Registration failed");
@@ -101,9 +102,7 @@ const Register = () => {
                 className={`fa ${
                   showConfirmPassword ? "fa-eye-slash" : "fa-eye"
                 }`}
-                onClick={() =>
-                  setShowConfirmPassword(!showConfirmPassword)
-                }
+                onClick={() => setShowConfirmPassword(!showConfirmPassword)}
               ></i>
             </div>
           </div>

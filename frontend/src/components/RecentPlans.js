@@ -12,11 +12,14 @@ const RecentPlans = () => {
   useEffect(() => {
     const fetchPlans = async () => {
       try {
-        const response = await axios.get("https://ai-travel-planner-w8jd.onrender.com/plan", {
-          withCredentials: true,
-        });
+        const response = await axios.get(
+          `${process.env.REACT_APP_BASE_URL}/plan`,
+          {
+            withCredentials: true,
+          }
+        );
         await new Promise((resolve) => setTimeout(resolve, 1000));
-        setPlans(response.data.trips.slice(0,5));
+        setPlans(response.data.trips.slice(0, 5));
       } catch (err) {
         console.error(err);
         setError("Failed to fetch plans");
@@ -50,7 +53,6 @@ const RecentPlans = () => {
             onClick={() => navigate(`/plan/${plan._id}`)}
             style={{ cursor: "pointer" }}
           >
-
             <div className="plan-content">
               <h4>{plan.destination}</h4>
               <p className="budget">Budget: {plan.budget}</p>
@@ -67,7 +69,14 @@ const RecentPlans = () => {
         ))}
       </div>
 
-      <button className="view-more-btn" onClick={() => {navigate('/plans')}}>View More</button>
+      <button
+        className="view-more-btn"
+        onClick={() => {
+          navigate("/plans");
+        }}
+      >
+        View More
+      </button>
     </div>
   );
 };

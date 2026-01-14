@@ -13,9 +13,12 @@ const RecentPlans = () => {
   useEffect(() => {
     const fetchPlans = async () => {
       try {
-        const response = await axios.get("https://ai-travel-planner-w8jd.onrender.com/plan", {
-          withCredentials: true,
-        });
+        const response = await axios.get(
+          `${process.env.REACT_APP_BASE_URL}/plan`,
+          {
+            withCredentials: true,
+          }
+        );
         await new Promise((resolve) => setTimeout(resolve, 1000));
         setPlans(response.data.trips);
       } catch (err) {

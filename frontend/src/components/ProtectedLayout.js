@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, Outlet } from "react-router-dom";
 import Navbar from "./Navbar";
-import axios from 'axios';
+import axios from "axios";
 
 const ProtectedLayout = () => {
   const navigate = useNavigate();
@@ -10,9 +10,12 @@ const ProtectedLayout = () => {
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        const res = await axios.get("https://ai-travel-planner-w8jd.onrender.com/user/check", {
-          withCredentials: true,
-        });
+        const res = await axios.get(
+          `${process.env.REACT_APP_BASE_URL}/user/check`,
+          {
+            withCredentials: true,
+          }
+        );
         if (!res.data.authenticated) {
           navigate("/login", { replace: true });
         }

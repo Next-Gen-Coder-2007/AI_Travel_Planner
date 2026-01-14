@@ -43,7 +43,7 @@ const Navbar = () => {
     try {
       setLogout(true);
       await axios.post(
-        "https://ai-travel-planner-w8jd.onrender.com/user/logout",
+        `${process.env.REACT_APP_BASE_URL}/user/logout`,
         {},
         { withCredentials: true }
       );

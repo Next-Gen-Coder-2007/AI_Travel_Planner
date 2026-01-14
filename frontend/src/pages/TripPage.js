@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import TripCard from "../components/TripCard";
 import ChatBox from "../components/ChatBox";
-import '../styles/TripPage.css';
+import "../styles/TripPage.css";
 
 const TripPage = () => {
   const { id } = useParams();
@@ -15,9 +15,12 @@ const TripPage = () => {
     const fetchTrip = async () => {
       try {
         setLoading(true);
-        const res = await axios.get(`https://ai-travel-planner-w8jd.onrender.com/plan/${id}`, {
-          withCredentials: true,
-        });
+        const res = await axios.get(
+          `${process.env.REACT_APP_BASE_URL}/plan/${id}`,
+          {
+            withCredentials: true,
+          }
+        );
         setTrip(res.data.data);
         setLoading(false);
       } catch (err) {
@@ -35,15 +38,15 @@ const TripPage = () => {
   if (!trip) return <p style={{ textAlign: "center" }}>No trip found</p>;
 
   return (
-  <div className="trip-page-container">
-    <div className="trip-card-container">
-      <TripCard trip={trip} />
-    </div>
+    <div className="trip-page-container">
+      <div className="trip-card-container">
+        <TripCard trip={trip} />
+      </div>
 
-    <div className="trip-chat-container">
-      <ChatBox tripId={trip._id} messages = {trip.chatContext} />
+      <div className="trip-chat-container">
+        <ChatBox tripId={trip._id} messages={trip.chatContext} />
+      </div>
     </div>
-  </div>
   );
 };
 

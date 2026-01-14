@@ -1,5 +1,5 @@
 import { useState } from "react";
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../styles/Login.css";
 
@@ -18,17 +18,16 @@ const Login = () => {
 
     try {
       await axios.post(
-        "https://ai-travel-planner-w8jd.onrender.com/user/login",
-        { email, password },{
+        `${process.env.REACT_APP_BASE_URL}/user/login`,
+        { email, password },
+        {
           withCredentials: true,
         }
       );
       console.log("Login successful");
-      navigate('/dashboard')
+      navigate("/dashboard");
     } catch (err) {
-      setError(
-        err.response?.data?.message || "Invalid email or password"
-      );
+      setError(err.response?.data?.message || "Invalid email or password");
     } finally {
       setLoading(false);
     }

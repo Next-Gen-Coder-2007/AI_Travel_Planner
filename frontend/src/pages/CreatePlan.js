@@ -55,7 +55,7 @@ const CreatePlan = () => {
 
     try {
       const response = await axios.post(
-        "https://ai-travel-planner-w8jd.onrender.com/plan/generate-plan",
+        `${process.env.REACT_APP_BASE_URL}/plan/generate-plan`,
         {
           destination: trip.destination,
           days: trip.days,
@@ -67,7 +67,7 @@ const CreatePlan = () => {
           headers: {
             "Content-Type": "application/json",
           },
-          withCredentials: true
+          withCredentials: true,
         }
       );
 
@@ -118,19 +118,17 @@ const CreatePlan = () => {
         </div>
 
         <div className="interests">
-          {["Beach", "Food", "Trekking", "Shopping", "Culture"].map(
-            (item) => (
-              <label key={item}>
-                <input
-                  type="checkbox"
-                  value={item}
-                  checked={trip.interests.includes(item)}
-                  onChange={handleInterest}
-                />
-                {item}
-              </label>
-            )
-          )}
+          {["Beach", "Food", "Trekking", "Shopping", "Culture"].map((item) => (
+            <label key={item}>
+              <input
+                type="checkbox"
+                value={item}
+                checked={trip.interests.includes(item)}
+                onChange={handleInterest}
+              />
+              {item}
+            </label>
+          ))}
         </div>
 
         <div className="custom-interest-box">
